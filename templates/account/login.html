@@ -1,0 +1,40 @@
+{% extends "account/base.html" %} {% load static %} {% load i18n %} {% load account socialaccount %} {% load crispy_forms_tags %} {% block head_title %}Войти{% endblock %} {% block content %}
+<main style="height: 100%;">
+    <div align="center" class="container">
+        <section class="mb-4">
+            <div class="row wow fadeIn">
+                <div class="col-6 offset-3">
+                    <h1>Вход</h1>
+
+                    {% get_providers as socialaccount_providers %} {% if socialaccount_providers %}
+                    <p>{% blocktrans with site.name as site_name %}Пожалуйста, войдите в систему с помощью одной из ваших существующих сторонних учетных записей. Или,<a href="{{ signup_url }}">войти</a> for a {{ site_name }} создайте учетную запись и войдите
+                        в систему ниже:{% endblocktrans %}</p>
+
+                    <div class="socialaccount_ballot">
+
+                        <ul class="socialaccount_providers">
+                            {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+                        </ul>
+
+                        <div class="login-or">или</div>
+
+                    </div>
+
+                    {% include "socialaccount/snippets/login_extra.html" %} {% else %}
+                    <p>Если вы еще не создали учетную запись, сначала
+                        <a style="color: red" href="{{ signup_url }}">зарегистрируйтесь</a></p>
+                    {% endif %}
+
+                    <form class="login" method="POST" action="{% url 'account_login' %}">
+                        {% csrf_token %} {{ form|crispy }} {% if redirect_field_value %}
+                        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" /> {% endif %}
+                        <button class="btn btn-danger btn-lg me-2" type="submit">Войти</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    {% endblock %}
+</main>

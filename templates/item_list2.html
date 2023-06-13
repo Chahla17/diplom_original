@@ -1,0 +1,105 @@
+{% extends "base.html" %} {% block title %} Главная {% endblock %} {% load sidebar %} {% block body %}
+
+<font face="Impact">
+    <font size="67">
+        <h1 align="center"><br>КАФЕ-БАР<br>"ТАЙМ-АУТ"</h1>
+    </font>
+</font>
+<div class="d-flex justify-content-center">
+    <div class="container_slider_css">
+        <img class="photo_slider_css" src="/media/f1.jpg" alt="">
+        <img class="photo_slider_css" src="/media/f2.jpg" alt="">
+        <img class="photo_slider_css" src="/media/f3.jpg" alt="">
+        <img class="photo_slider_css" src="/media/f4.jpg" alt="">
+        <img class="photo_slider_css" src="/media/f5.jpg" alt="">
+        <img class="photo_slider_css" src="/media/f6.jpg" alt="">
+        <img class="photo_slider_css" src="/media/f7.jpg" alt="">
+        <style>
+            .container_slider_css {
+                width: 50%;
+                height: 650px;
+                overflow: hidden;
+                position: relative;
+            }
+            
+            .photo_slider_css {
+                position: absolute;
+                animation: round 16s infinite;
+                opacity: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            
+            @keyframes round {
+                25% {
+                    opacity: 1
+                }
+                40% {
+                    opacity: 0
+                }
+            }
+            
+            img:nth-child(1) {
+                animation-delay: 0s
+            }
+            
+            img:nth-child(2) {
+                animation-delay: 4s
+            }
+            
+            img:nth-child(3) {
+                animation-delay: 8s
+            }
+            
+            img:nth-child(4) {
+                animation-delay: 16s
+            }
+            
+            img:nth-child(5) {
+                animation-delay: 20s
+            }
+            
+            img:nth-child(6) {
+                animation-delay: 24s
+            }
+            
+            img:nth-child(7) {
+                animation-delay: 28s
+            }
+            
+            @media(min-width:0px) and (max-width:320px) {
+                .container_slider_css {
+                    width: 80%;
+                    height: 190px
+                }
+            }
+            
+            @media(min-width:321px) and (max-width:480px) {
+                .container_slider_css {
+                    width: 80%;
+                    height: 190px
+                }
+            }
+        </style>
+    </div>
+</div>
+<br>
+<div class="center" style="margin-left: 20%; margin-right: 20%;">
+    <p align="center">
+        <font face="Comic Sans MS">
+            <font size="5">
+                Кафе "Тайм-аут" расположено в городе Ржеве и является одним из самых популярных заведений в городе. Кафе "Тайм-аут" предлагает своим гостям уютную атмосферу, вкусную еду и широкий выбор напитков. Цены в "Тайм-аут" немного выше среднего, но оправдываются
+                качеством еды и обслуживания. Официанты дружелюбные и внимательные, быстро реагируют на просьбы гостей.<br>
+                <br> Кафе "Тайм-аут" является отличным местом для проведения званых встреч, романтических свиданий или работы за ноутбуком. Если вы находитесь в Ржеве, то обязательно загляните в "Тайм-аут" и попробуйте наши блюда и напитки.<br>
+                <br> В меню можно найти разнообразные блюда европейской и русской кухни: салаты, сэндвичи, супы, пасту, и десерты. Напитки также представлены в широком ассортименте: от кофе и чая до алкогольных и безалкогольных коктейлей.
+            </font>
+        </font>
+    </p>
+</div>>
+<!-- Button trigger modal -->
+<div class="text-center">
+    <button style="height:90px;width:600px" margin-left="250px" text="center" type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" onclick="location.href = '/category/category-5/'">
+        <font size="6">СПЕЦИАЛЬНОЕ ПРЕДЛОЖЕНИЕ</font>
+  </button> {% endblock %}
+</div>>

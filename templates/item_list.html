@@ -1,0 +1,40 @@
+{% extends "base.html" %} {% block title %} Главная {% endblock %} {% load sidebar %} {% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-10">
+            <div class="pricing-header bg-danger px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+                <h1 class="display-4">
+                    <font color="white"><strong>Меню
+                    </strong></font>
+                </h1>
+                <p class="lead"></p>
+            </div>
+            <br>
+            <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+                {% for e in items %}
+                <div class="col">
+                    <div class="card mb-4 shadow-sm ">
+                        <div class="card-header bg-danger">
+                            <h4 class="my-0 fw-normal bg-danger">
+                                <font color="white"><strong>{{ e.title }} </strong></font>
+                            </h4>
+                        </div>
+                        <div class="card-body">
+                            <a href="{{ e.get_absolute_url }}"><img src="{{ e.image.url }}" class="card-img" alt="..."></a>
+                            <h1 class="card-title pricing-card-title">{{ e.price }} <small class="text-muted"><font color="#dc3545">рублей</font></small></h1>
+
+                            <a class="btn btn-outline-danger btn-lg me-2" href="{{ e.get_absolute_url }}">Купить</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% include '_pegination.html' %}
+        </div>
+        <aside class="col-lg-2">
+            {% get_cat %}
+        </aside>
+    </div>
+</div>
+{% endblock %}

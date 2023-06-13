@@ -1,0 +1,71 @@
+{% extends "base.html" %}{% block body %}
+<main>
+    <div class="container">
+        <div class="table-responsive">
+            <h2 align="center">Информация о заказе</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col" width="100" height="111">Номер позиции</th>
+                        <th scope="col" width="100" height="111">Фото блюда</th>
+                        <th scope="col">Название</th>
+                        <th scope="col" align="center">Количество порций</th>
+                        <th scope="col" align="center">Цена</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order_item in object.items.all %}
+                    <tr>
+                        <th scope="row">
+                            <font size="5" style="color: red">{{ forloop.counter }}</font>
+                        </th>
+                        <td align="center"><img src="{{ order_item.item.image2 }}" width="100" height="111" class="card-img" alt="..."></td>
+                        <td>
+                            <font size="5">{{ order_item.item.title }}</font>
+                        </td>
+                        <td>
+                            <font size="5"><a style="color: red" href="{% url 'core:remove-single-item-from-cart' order_item.item.slug %}"><i class="fa fa-chevron-left mr-2"></i></font></a>
+                                <font size="5">{{ order_item.quantity }}</font>
+                                <font size="5"><a style="color: red" href="{% url 'core:add-to-cart' order_item.item.slug %}"><i class="fa fa-chevron-right ml-2"></i></font></a>
+                        </td>
+
+                        <td>
+                            <font size="5">{{ order_item.item.price }} рублей</font>
+                        </td>
+                        <td>
+                            <font size="5"><a style="color: red" href="{% url 'core:remove-from-cart' order_item.item.slug %}"><i class="fa fa-times"></i></a></font>
+                        </td>
+
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="5">Ваша корзина пуста.</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <a class="btn btn-outline-danger btn-lg me-2" href="/">Продолжить покупки</a>
+                        </td>
+                    </tr>
+                    {% endfor %} {% if object.get_total %}
+                    <tr>
+                        <td colspan="2">
+                            <font size="5"><b>Общая цена:</b></font>
+                        </td>
+                        <td>
+                            <font size="5"><b>{{ object.get_total }} рублей.</b></font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <a class="btn btn-outline-danger btn-lg me-2" href="/menu/">Продолжить покупки</a>
+                            <a class="btn btn-danger btn-lg me-2" href="/checkout/">Перейти к оформлению заказа</a>
+                        </td>
+                    </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</main>
+{% endblock %}
